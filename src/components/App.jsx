@@ -1,15 +1,9 @@
-import { useState } from "react";
-import Todos from "./Todos";
-import Footer from "./Footer";
-import uuid from "react-uuid";
-import {
-  Title,
-  Container,
-  Input,
-  CombiningInputAndIcon1,
-  FontAwesome,
-} from "./styles/style";
-import GlobalStyles from "./styles/reset";
+import { useState } from 'react';
+import Todos from './Todos';
+import Footer from './Footer';
+import uuid from 'react-uuid';
+import {StyleForAllProject} from './styles/style';
+import GlobalStyles from './styles/reset';
 
 export default function Inputform() {
   const [todo, setTodo] = useState("");
@@ -17,7 +11,8 @@ export default function Inputform() {
   const [todos, setTodos] = useState([]);
   const [completed, setCompleted] = useState(false);
   const [countCompleted, setCountCompleted] = useState(false);
-  const [inputClock, setInputClock] = useState(0);
+  const [class1, setClass1] = useState("");
+  
 
   function markAllAsCompleted() {
     const completedTodos = todos.map((todo) => {
@@ -48,7 +43,8 @@ export default function Inputform() {
   }
 
   function changeFinter(newFilter) {
-    setFilter(newFilter);
+    setFilter(newFilter)
+    setClass1("button1")
   }
 
   function clear() {
@@ -64,23 +60,23 @@ export default function Inputform() {
   return (
     <>
       <GlobalStyles />
-      <Container>
-        <Title>todos</Title>
-        <CombiningInputAndIcon1>
+      <StyleForAllProject>
+        <h1 className='title'>todos</h1>
+        <div className='inp'>
           {todos.length != 0 ? (
-            <FontAwesome onClick={markAllAsCompleted}></FontAwesome>
+            <div className='fonavesom' onClick={markAllAsCompleted}></div>
           ) : (
             ""
           )}
           <form onSubmit={handleSendInput}>
-            <Input
+            <input className='input'
               type="text"
               placeholder="What needs to be done?"
               value={todo}
               onChange={(e) => setTodo(e.target.value)}
             />
           </form>
-        </CombiningInputAndIcon1>
+        </div>
         <Todos
           todos={todos}
           filter={filter}
@@ -95,11 +91,12 @@ export default function Inputform() {
             filter={filter}
             clear={clear}
             countCompleted={countCompleted}
+            class1={class1}
           />
         ) : (
           ""
         )}
-      </Container>
+      </StyleForAllProject>
     </>
   );
 }
