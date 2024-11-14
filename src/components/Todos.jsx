@@ -7,17 +7,19 @@ export default function Todos({
   completedTask,
   deleteTodo,
   checkIsComleted,
+  checkTodos,
+  checkCountCompletedTasks,
 }) {
   const filterTodos = (filter) => {
     let filteredTodos = [];
     switch (filter) {
-      case "all":
+      case "All":
         filteredTodos = [...todos];
         break;
-      case "completed":
+      case "Completed":
         filteredTodos = todos.filter((todo) => todo.completed);
         break;
-      case "active":
+      case "Active":
         filteredTodos = todos.filter((todo) => !todo.completed);
         break;
     }
@@ -25,13 +27,16 @@ export default function Todos({
   };
   useEffect(() => {
     checkIsComleted();
+    checkTodos();
+    checkCountCompletedTasks();
   }, [todos]);
 
   const filteredTodos = useMemo(() => filterTodos(filter), [todos, filter]);
   return (
     <ul>
       {filteredTodos.map((todo) => (
-        <Todo key={todo.id}
+        <Todo
+          key={todo.id}
           todo={todo}
           completedTask={completedTask}
           deleteTodo={deleteTodo}

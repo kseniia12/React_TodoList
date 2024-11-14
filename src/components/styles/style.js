@@ -9,19 +9,23 @@ export const StyleForAllProject = styled.div`
     color: #b83f45;
     font-weight: 200;
   }
-  .inp {
+  .section-input {
     border: 1px solid #ffffff;
     display: flex;
     align-items: center;
     padding-left: 20px;
   }
-  .fonavesom {
-    background: url(https://img.icons8.com/?size=100&id=48464&format=png&color=000000) center no-repeat;
+  .activ-icon {
+    background: url(https://img.icons8.com/?size=100&id=48464&format=png&color=000000)
+      center no-repeat;
     background-size: 30px;
     height: 30px;
     width: 30px;
   }
-  .input{
+  .no-activ-icon {
+    visibility: hidden;
+  }
+  .input {
     margin-top: 20px;
     padding: 16px 16px 16px 60px;
     height: 65px;
@@ -41,26 +45,26 @@ export const StylesforFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .container{
+  .edit-button {
     display: flex;
     gap: 20px;
   }
-  .button1{
+  .button-activ {
     border: 1px solid red;
     padding: 5px;
   }
-  .button2{
+  .button-not-active {
     border: none;
     padding: 5px;
   }
-  .button3{
+  .button-clear-task {
     border: none;
     padding: 5px;
     visibility: hidden;
   }
 `;
 
-export const Li = styled.li`
+export const TodoList = styled.li`
   height: 58.8px;
   width: 550px;
   font-size: 24px;
@@ -71,32 +75,28 @@ export const Li = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px 0px 10px;
-  .intut1{
+  .strikethrough-text {
     display: flex;
     gap: 20px;
     text-decoration: line-through;
   }
-  .input2{
+  .not-strikethrough-text {
     display: flex;
     gap: 20px;
   }
-  .crug{
+  .unfulfilled-task {
     height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: 0.4px solid #484848;
+    width: 30px;
+    border-radius: 50%;
+    border: 0.4px solid #484848;
   }
-  .crug1{
+  .completed-task {
     height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: 0.4px solid green;
-  background: url(https://img.icons8.com/?size=100&id=115828&format=png&color=000000)
-    center no-repeat;
-  background-size: 20px;
+    width: 30px;
+    border-radius: 50%;
+    border: 0.4px solid green;
+    background: url(https://img.icons8.com/?size=100&id=115828&format=png&color=000000)
+      center no-repeat;
+    background-size: 20px;
   }
 `;
-
-
-
-

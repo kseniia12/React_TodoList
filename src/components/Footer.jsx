@@ -1,17 +1,41 @@
 import React, { useState } from "react";
-import { StylesforFooter} from "./styles/style";
-export default function Footer({todos, getFilteredTodos, filter, clear, countCompleted, class1}){ 
-  const [button2, setButton2] = useState('button3')
-  return ( 
+import { StylesforFooter } from "./styles/style";
+import Button from "./Button";
+export default function Footer({
+  getFilteredTodos,
+  deleteCompletedTasks,
+  countCompleted,
+  classButtonAll,
+  classButtonActive,
+  classButtonCompleted,
+  countCompletedTasks
+}) {
+  const [buttonAll] = useState("All");
+  const [buttonActive] = useState("Active");
+  const [buttonCompleted] = useState("Completed");
+  return (
     <StylesforFooter>
-    <div> {todos.length} item left</div>
-      <div className="container">
-          <button className={class1} onClick={() => getFilteredTodos("all")}>All</button>
-          <button className={class1} onClick={() => getFilteredTodos("active")}>Active</button>
-          <button className={class1}  onClick={() => getFilteredTodos("completed")}>Completed</button>
+      <div> {countCompletedTasks} item left</div>
+      <div className="edit-button">
+        <Button
+          className={classButtonAll}
+          getFilteredTodos={getFilteredTodos}
+          filter={buttonAll}
+        />
+        <Button
+          className={classButtonActive}
+          getFilteredTodos={getFilteredTodos}
+          filter={buttonActive}
+        />
+        <Button
+          className={classButtonCompleted}
+          getFilteredTodos={getFilteredTodos}
+          filter={buttonCompleted}
+        />
       </div>
-      {/* {countCompleted > 0 ? setButton2("button2") : setButton2("button3")} */}
-      <button className="button2" onClick={clear}>Clear Completed</button>
+      <button className={countCompleted} onClick={deleteCompletedTasks}>
+        Clear Completed
+      </button>
     </StylesforFooter>
   );
 }
