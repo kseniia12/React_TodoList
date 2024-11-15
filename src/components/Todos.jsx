@@ -1,46 +1,14 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import Todo from "./Todo";
+import { useSelector } from "react-redux";
+import selectTodosByFilter from "./store/reselect";
 
-export default function Todos({
-  todos,
-  filter,
-  completedTask,
-  deleteTodo,
-  checkIsComleted,
-  checkTodos,
-  checkCountCompletedTasks,
-}) {
-  const filterTodos = (filter) => {
-    let filteredTodos = [];
-    switch (filter) {
-      case "All":
-        filteredTodos = [...todos];
-        break;
-      case "Completed":
-        filteredTodos = todos.filter((todo) => todo.completed);
-        break;
-      case "Active":
-        filteredTodos = todos.filter((todo) => !todo.completed);
-        break;
-    }
-    return filteredTodos;
-  };
-  useEffect(() => {
-    checkIsComleted();
-    checkTodos();
-    checkCountCompletedTasks();
-  }, [todos]);
-
-  const filteredTodos = useMemo(() => filterTodos(filter), [todos, filter]);
+export default function Todos() {
+  const todos = useSelector(selectTodosByFilter);
   return (
     <ul>
-      {filteredTodos.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          completedTask={completedTask}
-          deleteTodo={deleteTodo}
-        />
+      {todos.map((todo) => (
+        <Todo id={todo.id} todo={todo.text} completedTask={todo.completed} />
       ))}
     </ul>
   );

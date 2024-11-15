@@ -1,7 +1,11 @@
-import React from "react";
-export default function Button({ className, getFilteredTodos, filter }) {
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {changeFilter} from "./store/filterSlice"
+
+export default function Button({ className1, isAcctive, filter }) {
+  const dispatch = useDispatch()
   return (
-    <button className={className} onClick={() => getFilteredTodos(filter)}>
+    <button className={isAcctive && 'button-activ'} onClick={()=>{dispatch(changeFilter(filter))}}>
       {filter}
     </button>
   );
