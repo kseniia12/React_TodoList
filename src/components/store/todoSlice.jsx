@@ -29,17 +29,26 @@ const todoSlice = createSlice({
             state.todos = state.todos.filter((todo) => todo.id != id);
         },
         markAllTasksCompleted(state, action){
-            for (let i = 0; i < state.todos.length; i++){
+            for (let i = 0; i < state.todos.length; i++){                
                 state.todos[i].completed = !state.todos[i].completed
             }
             
         },
         deleteAllCompletedTask(state, action){
             state.todos = state.todos.filter((todo) => todo.completed === false);
+        }, 
+        editTodo(state, action){
+            const id = action.payload.id
+            const index = state.todos.findIndex(todo => todo.id === id);
+            if (index === -1) { 
+                return
+            } 
+            state.todos[index].text = action.payload.valueInputField
+        
         }
     }
 })
 
-export const {addTodo, completeTodo, deleteTodo, markAllTasksCompleted, deleteAllCompletedTask} = todoSlice.actions
+export const {addTodo, completeTodo, deleteTodo, markAllTasksCompleted, deleteAllCompletedTask, editTodo} = todoSlice.actions
 
 export default todoSlice.reducer

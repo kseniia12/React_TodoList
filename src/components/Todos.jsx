@@ -6,10 +6,10 @@ import selectTodosByFilter from "./store/reselect";
 export default function Todos() {
   const todos = useSelector(selectTodosByFilter);
   return (
-    <ul>
+    <div>
       {todos.map((todo) => (
         <Todo id={todo.id} todo={todo.text} completedTask={todo.completed} />
       ))}
-    </ul>
+    </div>
   );
 }

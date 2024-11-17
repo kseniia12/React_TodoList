@@ -8,10 +8,11 @@ export default function Input() {
   const todos = useSelector((state) => state.todos.todos);
   const [classNameIcon, setClassNameIcon] = useState("no-activ-icon ");
   const dispatch = useDispatch();
-
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const addTask = (e) => {
+     e.preventDefault();
     if (todo.trim().length) {
-      e.preventDefault();
+     
       dispatch(addTodo(todo));
     }
     setTodo("");
@@ -32,11 +33,17 @@ export default function Input() {
       setClassNameIcon("no-activ-icon ");
     }
   }
+  const handleInputFocus = () => {
+    setIsInputFocused(true);
+  };
 
+  const handleInputBlur = () => {
+    setIsInputFocused(false);
+  };
   return (
     <>
       <h1 className="title">todos</h1>
-      <div className="section-input">
+      <div className={`section-input ${isInputFocused ? "activ" : "no-activ"}`}>
         <div
           className={classNameIcon}
           onClick={() => markAllAsCompleted()}
@@ -48,6 +55,8 @@ export default function Input() {
             placeholder="What needs to be done?"
             value={todo}
             onChange={(e) => setTodo(e.target.value)}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
           />
         </form>
       </div>

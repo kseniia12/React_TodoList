@@ -9,11 +9,27 @@ export const StyleForAllProject = styled.div`
     color: #b83f45;
     font-weight: 200;
   }
-  .section-input {
-    border: 1px solid #ffffff;
+  .section-input.no-activ{
+    border: 1px solid (255, 0, 0, 0.1);
     display: flex;
     align-items: center;
     padding-left: 20px;
+  }
+  .section-input.activ{
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+    .z{
+ height: 60px;
+    width: 489px;
+  }
+  .h{
+    border: 1px solid red;
+  
+    height: 60px;
+    width: 489px;
   }
   .activ-icon {
     background: url(https://img.icons8.com/?size=100&id=48464&format=png&color=000000)
@@ -29,7 +45,7 @@ export const StyleForAllProject = styled.div`
     margin-top: 20px;
     padding: 16px 16px 16px 60px;
     height: 65px;
-    width: 515px;
+    width: 498px;
     font-style: oblique;
     font-size: 24px;
     border: 1px solid #ffffff;
@@ -64,7 +80,8 @@ export const StylesforFooter = styled.div`
   }
 `;
 
-export const TodoList = styled.li`
+export const TodoList = styled.div`
+ user-select: none;
   height: 58.8px;
   width: 550px;
   font-size: 24px;
@@ -79,10 +96,12 @@ export const TodoList = styled.li`
     display: flex;
     gap: 20px;
     text-decoration: line-through;
+     align-items: center;
   }
   .not-strikethrough-text {
     display: flex;
     gap: 20px;
+    align-items: center;
   }
   .unfulfilled-task {
     height: 30px;
@@ -99,4 +118,16 @@ export const TodoList = styled.li`
       center no-repeat;
     background-size: 20px;
   }
+  .zz{
+  display: flex;
+    align-items: center;
+    
+  }
+   .ze{
+   visibility: hidden;
+   }
+   .zee{
+
+
+   }
 `;

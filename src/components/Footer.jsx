@@ -13,40 +13,25 @@ export default function Footer() {
   const [classButton, setclassButton] = useState("button-clear-task");
   const [countCompletedTasks, setCountCompletedTasks] = useState(0);
   
-  // function countTodos() {
-  //   if (todos.length > 0) {
-  //     setclassButtonClear("button-not-active");
-  //     setCountCompletedTasks(countCompletedTasks + 1);
-  //   } else {
-  //     setclassButtonClear("button-clear-task");
-  //   }
-  // }
-  // useEffect(() => {
-  //   countTodos();
-  // }, [todos]);
-  
-  function checkButtonState(){
-    console.log(buttonState)
-    setclassButtonAll("button-activ")
-    setButtonState(true)
-    if (buttonState === true){
-      setclassButtonAll("button-activ")
-    } else{
-      setclassButtonAll("button-not-active")
-    }
+  function countTodos() {
+    let countNoCompletedTask = todos.filter(todo => todo.completed === false)
+    setCountCompletedTasks(countNoCompletedTask.length)
+   {countNoCompletedTask.length != todos.length ? setclassButton("button-not-active") : setclassButton("button-clear-task")}
   }
-
+  useEffect(() => {
+    countTodos();
+  }, [todos]);
   
   return (
     <StylesforFooter>
       <div> {countCompletedTasks} item left</div>
       <div className="edit-button">
-        <Button className1={classButtonAll} isAcctive = {filter === 'All'} filter={'All'} onClick={checkButtonState}/>
-        <Button className1={classButtonAll}  isAcctive = {filter === 'Completed'} filter={'Completed'} onClick={checkButtonState}/>
-        <Button className1={classButtonAll} isAcctive = {filter === 'Active'} filter={'Active'} onClick={checkButtonState}/>
+        <Button className1={classButtonAll} isAcctive = {filter === 'All'} filter={'All'}/>
+        <Button className1={classButtonAll}  isAcctive = {filter === 'Completed'} filter={'Completed'}/>
+        <Button className1={classButtonAll} isAcctive = {filter === 'Active'} filter={'Active'}/>
       </div>
       <button
-        // className={classButtonClear}
+        className={classButton}
         onClick={() => dispatch(deleteAllCompletedTask())}>
         Clear Completed
       </button>
