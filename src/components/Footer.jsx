@@ -5,34 +5,50 @@ import { useDispatch } from "react-redux";
 import Button from "./Button";
 import { deleteAllCompletedTask } from "./store/todoSlice";
 export default function Footer() {
-  const [buttonState, setButtonState] = useState(false)
   const todos = useSelector((state) => state.todos.todos);
-  const filter = useSelector(state => state.filters.filter);
+  const filter = useSelector((state) => state.filters.filter);
   const dispatch = useDispatch();
-  const [classButtonAll, setclassButtonAll] = useState("button-not-active");
+  const [classButtonAll] = useState("button-not-active");
   const [classButton, setclassButton] = useState("button-clear-task");
   const [countCompletedTasks, setCountCompletedTasks] = useState(0);
-  
+
   function countTodos() {
-    let countNoCompletedTask = todos.filter(todo => todo.completed === false)
-    setCountCompletedTasks(countNoCompletedTask.length)
-   {countNoCompletedTask.length != todos.length ? setclassButton("button-not-active") : setclassButton("button-clear-task")}
+    let countNoCompletedTask = todos.filter((todo) => todo.completed === false);
+    setCountCompletedTasks(countNoCompletedTask.length);
+    {
+      countNoCompletedTask.length != todos.length
+        ? setclassButton("button-not-active")
+        : setclassButton("button-clear-task");
+    }
   }
   useEffect(() => {
     countTodos();
   }, [todos]);
-  
+
   return (
     <StylesforFooter>
       <div> {countCompletedTasks} item left</div>
       <div className="edit-button">
-        <Button className1={classButtonAll} isAcctive = {filter === 'All'} filter={'All'}/>
-        <Button className1={classButtonAll}  isAcctive = {filter === 'Completed'} filter={'Completed'}/>
-        <Button className1={classButtonAll} isAcctive = {filter === 'Active'} filter={'Active'}/>
+        <Button
+          className1={classButtonAll}
+          isAcctive={filter === "All"}
+          filter={"All"}
+        />
+        <Button
+          className1={classButtonAll}
+          isAcctive={filter === "Completed"}
+          filter={"Completed"}
+        />
+        <Button
+          className1={classButtonAll}
+          isAcctive={filter === "Active"}
+          filter={"Active"}
+        />
       </div>
       <button
         className={classButton}
-        onClick={() => dispatch(deleteAllCompletedTask())}>
+        onClick={() => dispatch(deleteAllCompletedTask())}
+      >
         Clear Completed
       </button>
     </StylesforFooter>

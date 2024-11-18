@@ -9,25 +9,24 @@ export const StyleForAllProject = styled.div`
     color: #b83f45;
     font-weight: 200;
   }
-  .section-input.no-activ{
+  .section-input.no-activ {
     border: 1px solid (255, 0, 0, 0.1);
     display: flex;
     align-items: center;
     padding-left: 20px;
   }
-  .section-input.activ{
+  .section-input.activ {
     border: 1px solid red;
     display: flex;
     align-items: center;
     padding-left: 20px;
   }
-    .z{
- height: 60px;
+  .no-activ-form-input {
+    height: 60px;
     width: 489px;
   }
-  .h{
+  .activ-form-input {
     border: 1px solid red;
-  
     height: 60px;
     width: 489px;
   }
@@ -81,7 +80,7 @@ export const StylesforFooter = styled.div`
 `;
 
 export const TodoList = styled.div`
- user-select: none;
+  user-select: none;
   height: 58.8px;
   width: 550px;
   font-size: 24px;
@@ -96,12 +95,14 @@ export const TodoList = styled.div`
     display: flex;
     gap: 20px;
     text-decoration: line-through;
-     align-items: center;
+    align-items: center;
+    width: 100%;
   }
   .not-strikethrough-text {
     display: flex;
     gap: 20px;
     align-items: center;
+    width: 100%;
   }
   .unfulfilled-task {
     height: 30px;
@@ -118,16 +119,20 @@ export const TodoList = styled.div`
       center no-repeat;
     background-size: 20px;
   }
-  .zz{
-  display: flex;
+  .zz {
+    display: flex;
     align-items: center;
-    
+    width: 100%;
+    justify-content: space-between;
   }
-   .ze{
-   visibility: hidden;
-   }
-   .zee{
-
-
-   }
+  .no-activ-cross {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    width: 30px;
+    justify-content: space-between;
+  }
+  .activ-cross {
+    width: 30px;
+  }
 `;

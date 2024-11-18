@@ -7,7 +7,7 @@ const selectTodosByFilter = createSelector(
   [SelectAllTodos, SelectActiveFilter],
   (allTodos, activeFilter) => {
     if (activeFilter === "All") {
-        return allTodos
+      return allTodos;
     }
 
     if (activeFilter === "Completed") {
@@ -17,8 +17,7 @@ const selectTodosByFilter = createSelector(
     if (activeFilter === "Active") {
       return allTodos.filter((todo) => !todo.completed);
     }
-
-}
+  }
 );
 
 export default selectTodosByFilter;

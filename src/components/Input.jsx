@@ -10,9 +10,8 @@ export default function Input() {
   const dispatch = useDispatch();
   const [isInputFocused, setIsInputFocused] = useState(false);
   const addTask = (e) => {
-     e.preventDefault();
+    e.preventDefault();
     if (todo.trim().length) {
-     
       dispatch(addTodo(todo));
     }
     setTodo("");
